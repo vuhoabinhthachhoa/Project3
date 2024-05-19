@@ -20,7 +20,6 @@ public class RoleRepositoryImpl implements RoleRepository {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-
 	@Override
 	public RoleEntity findOneByCode(String code) {
 		String sql = "select * FROM role as r where r.code = '" + code + "'";

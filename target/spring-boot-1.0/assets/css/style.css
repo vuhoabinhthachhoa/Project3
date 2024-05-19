@@ -1,0 +1,102 @@
+.navbar{
+    background-color: rgba(20, 187, 42, 0.896);
+}
+
+.navbar a {
+    color: #fff;
+}
+
+
+
+a.dropdown-item {
+    color: #000;
+}
+
+.dropdown-item:active {
+    background-color: rgba(20, 187, 42, 0.896);
+}
+
+.nav-link:focus, .nav-link:hover {
+    color: #fff;
+    opacity: 0.8;
+}
+
+.body {
+
+}
+
+.page-title {
+    margin-top: 10px;
+}
+
+.page-title h1 {
+    font-size: 28px;
+}
+
+
+.search-fields {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.search-fields-title {
+    background-color: #ccc; /* Change #ff0 to any color you want */
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.search-fields-title h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.search-fields-content .row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form-check-label {
+    padding-left: 5px;
+}
+
+
+.results {
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.results p {
+    font-size: 12px;
+    word-wrap: break-word;
+}
+
+.results-header {
+    background-color: #ccc;
+}
+
+.results-field  {
+    border: 1px solid #7a7777;
+    height: 60px;
+}
+
+.results-field p {
+    margin: 0;
+}
+
+.operations-button {
+    border: none;
+    background-color: #fff;
+}
+
+.operations-button:hover {
+    transform: scale(1.1);
+}
+
+.actions-btn {
+    margin-top: 20px;
+}
+
+
+
+

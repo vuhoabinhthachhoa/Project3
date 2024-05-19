@@ -19,7 +19,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -37,14 +39,10 @@ public class UserService implements IUserService {
 
     @Autowired
     private UserConverter userConverter;
-
-
-
     @Override
     public UserDTO findOneByUserNameAndStatus(String name, int status) {
         return userConverter.convertToDto(userRepository.findOneByUserNameAndStatus(name, status));
     }
-
     @Override
     public List<UserDTO> getUsers(String searchValue, Pageable pageable) {
         Page<UserEntity> users = null;
@@ -174,5 +172,15 @@ public class UserService implements IUserService {
             userEntity.setStatus(0);
             userRepository.save(userEntity);
         }
+    }
+
+    @Override
+    public Map<Long, String> getStaffs() {
+        Map<Long, String> staffs = new HashMap<>();
+        List<UserEntity> userEntities = userRepository.findByStatusAndRoles_Code(1, "STAFF");
+        for(UserEntity it : userEntities) {
+            staffs.put(it.getId(), it.getFullName());
+        }
+        return staffs;
     }
 }

@@ -8,14 +8,12 @@
 <body>
 <div class="main-content">
     <div class="main-content-inner">
-        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
-            <ul class="breadcrumb">
-                <li>
-                    <i class="ace-icon fa fa-home home-icon"></i>
-                    <a href="#">Trang chủ</a>
-                </li>
-            </ul><!-- /.breadcrumb -->
-        </div>
+        <!-- breadcrumb -->
+        <nav aria-label="breadcrumb" style="padding: 12px;">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Trang chủ</li>
+            </ol>
+        </nav>
         <div class="page-content">
             <div class="row" >
                 <div class="col-xs-12">

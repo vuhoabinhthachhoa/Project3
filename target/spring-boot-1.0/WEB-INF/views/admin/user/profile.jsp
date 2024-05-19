@@ -15,13 +15,12 @@
                 } catch (e) {
                 }
             </script>
-            <ul class="breadcrumb">
-                <li>
-                    <i class="ace-icon fa fa-home home-icon"></i>
-                    <a href="#">Trang chủ</a>
-                </li>
-                <li class="active">Chỉnh sửa người dùng</li>
-            </ul><!-- /.breadcrumb -->
+            <nav aria-label="breadcrumb" style="padding: 12px;">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="./home">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa người dùng</li>
+                </ol>
+            </nav>
         </div>
         <div class="page-content">
             <div class="row">
