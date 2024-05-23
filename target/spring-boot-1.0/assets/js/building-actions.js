@@ -1,4 +1,5 @@
 const url = '/api/buildings';
+
 function addBuilding(data) {
     if(data.typeCode.length === 0) {
         alert('Please select a building type');
@@ -29,6 +30,39 @@ function addBuilding(data) {
         }
     });
 }
+
+// function addBuilding(formData) {
+//     // if(!formData.has('typeCode')) {
+//     //     alert('Please select a building type');
+//     //     return;
+//     // }
+//     // if(!formData.has('name')) {
+//     //     alert('Building name is missing');
+//     //     return;
+//     // }
+//
+//     $.ajax({
+//         url: url,
+//         type: 'POST',
+//         data: formData,
+//         processData: false,  // tell jQuery not to process the data
+//         contentType: false,  // tell jQuery not to set contentType
+//         dataType: 'text',
+//         success: function(response) {
+//             alert(response);
+//             window.location.replace("/admin/building-list")
+//         },
+//         error: function(jqXHR, textStatus, errorThrown) {
+//             alert('apply failed');
+//             console.log('apply failed');
+//             console.log('Status: ' + jqXHR.status); // HTTP status code
+//             console.log('Error: ' + textStatus); // Type of error
+//             console.log('Exception: ' + errorThrown); // Exception thrown by the error
+//             console.log('Response text: ' + jqXHR.responseText); // Complete response from the server
+//         }
+//     });
+// }
+
 function updateBuilding(data) {
     if(data.typeCode.length === 0) {
         alert('Please select a building type');

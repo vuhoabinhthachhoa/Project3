@@ -5,10 +5,13 @@ import com.javaweb.entity.RentAreaEntity;
 import com.javaweb.enums.DistrictCode;
 import com.javaweb.model.dto.BuildingDTO;
 import com.javaweb.model.response.BuildingSearchResponse;
+import com.javaweb.utils.FileUploadUtils;
 import org.modelmapper.ModelMapper;
+import org.springframework.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -90,6 +93,7 @@ public class BuildingConverter {
 
         // convert rentAreas to string
         buildingDTO.setRentArea(convertRentAreasToString(buildingEntity.getRentAreas()));
+
         return buildingDTO;
     }
 }

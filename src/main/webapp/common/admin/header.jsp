@@ -5,15 +5,15 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <div class="collapse navbar-collapse nav-menu" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse nav-menu">
             <div class="dropdown " data-bs-theme="dark">
                 <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-bars"></i>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="./home">Trang chủ</a></li>
-                    <li><a class="dropdown-item" href="./building-list">Tìm kiếm tòa nhà</a></li>
-                    <li><a class="dropdown-item" href="./add-edit-building">Thêm, xóa tòa nhà</a></li>
+                    <li><a class="dropdown-item" href="/admin/home">Trang chủ</a></li>
+                    <li><a class="dropdown-item" href="/admin/building-list">Tìm kiếm tòa nhà</a></li>
+                    <li><a class="dropdown-item" href="/admin/add-edit-building">Thêm, xóa tòa nhà</a></li>
                 </ul>
             </div>
 

@@ -8,8 +8,11 @@ import com.javaweb.model.response.ResponseDTO;
 import com.javaweb.model.response.StaffResponseDTO;
 import com.javaweb.service.IBuildingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -38,10 +41,18 @@ public class BuildingAPI {
     }
 
     @PostMapping // data received will be in JSON Object
-    public String addBuilding(@RequestBody BuildingDTO buildingDTO) {
+    public String addBuilding(@RequestBody BuildingDTO buildingDTO) throws IOException {
         buildingService.addBuilding(buildingDTO);
         return "Add building successfully";
     }
+
+//    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    public String addBuilding(@RequestPart("building") BuildingDTO buildingDTO, @RequestPart("avatar") MultipartFile avatar) throws IOException {
+//        // handle the avatar file...
+//        buildingDTO.setAvatar(avatar);
+//        buildingService.addBuilding(buildingDTO);
+//        return "Add building successfully";
+//    }
 
     @PutMapping("/assignment") // data received will be in JSON Object
     public String updateAssignmentBuilding(@RequestBody AssignmentBuildingDTO assignmentBuildingDTO) {

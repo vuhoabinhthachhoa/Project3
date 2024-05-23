@@ -169,7 +169,7 @@
                             </div>
                             <div class="col-3 form-group">
                                 <label for="brokerage-fee">Phí môi giới</label>
-                                <form:input path="brokerageFee" id="brokerage-fee" class="form-control" type="number"/>
+                                <form:input path="brokerageFee" id="brokerage-fee" class="form-control" type="number" value="${addOrEditBuilding.brokerageFee}"/>
                             </div>
                         </div>
 
@@ -189,6 +189,22 @@
                             <div class="col form-group">
                                 <label for="notes">Ghi chú</label>
                                 <form:input path="note" id="notes" class="form-control"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col form-group">
+                                <label for="avatar">Ảnh tòa nhà</label>
+                                <form:input path="avatar" id="avatar" class="form-control" type="file" accept="image/png, image/jpeg"/>
+
+                                    <c:if test="${not empty addOrEditBuilding.avatar}">
+                                        <c:set var="imagePath" value="/repository${addOrEditBuilding.avatar}"/>
+                                        <img src="${imagePath}" alt="" id="viewImage" width="300px" height="300px" style="margin-top: 50px">
+                                    </c:if>
+                                    <c:if test="${empty addOrEditBuilding.avatar}">
+                                        <img src="/admin/image/default.png" alt="" id="viewImage" width="300px" height="300px">
+                                    </c:if>
+
                             </div>
                         </div>
                     </form>

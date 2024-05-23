@@ -17,13 +17,20 @@ import com.javaweb.repository.BuildingRepository;
 import com.javaweb.repository.RentAreaRepository;
 import com.javaweb.service.IBuildingService;
 import com.javaweb.service.IUserService;
+import com.javaweb.utils.FileUploadUtils;
+import com.javaweb.utils.UploadFileUtils;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -92,7 +99,9 @@ public class BuildingService implements IBuildingService {
         // delete rentareas after deleting building
         BuildingEntity buildingEntity = buildingConverter.convertToEntity(buildingDTO);
         rentAreaRepository.saveAll(buildingEntity.getRentAreas());
-        buildingRepository.save(buildingEntity); // save: if there is id in DTO, will update, else there is no id it  will create
+        BuildingEntity savedBuilding =  buildingRepository.save(buildingEntity); // save: if there is id in DTO, will update, else there is no id it  will create
+        saveThumbnail(buildingDTO, savedBuilding);
+
     }
 
     @Transactional
@@ -113,7 +122,9 @@ public class BuildingService implements IBuildingService {
         // delete all rent areas of the building after updating
         rentAreaRepository.deleteAllByBuilding(buildingEntity);
         rentAreaRepository.saveAll(buildingEntity.getRentAreas());
-        buildingRepository.save(buildingEntity);
+        BuildingEntity savedBuilding = buildingRepository.save(buildingEntity);
+
+        saveThumbnail(buildingDTO, savedBuilding);
     }
 
     @Transactional
@@ -158,5 +169,20 @@ public class BuildingService implements IBuildingService {
         responseDTO.setData(staffResponseDTOS);
         responseDTO.setMessage("Success");
         return responseDTO;
+    }
+
+    private void saveThumbnail(BuildingDTO buildingDTO, BuildingEntity buildingEntity) {
+        String path = "/building/" + buildingDTO.getAvatarName();
+        if (null != buildingDTO.getAvatarBase64()) {
+            if (null != buildingEntity.getAvatar()) {
+                if (!path.equals(buildingEntity.getAvatar())) {
+                    File file = new File("C://home/office" + buildingEntity.getAvatar());
+                    file.delete();
+                }
+            }
+            byte[] bytes = Base64.decodeBase64(buildingDTO.getAvatarBase64().getBytes());
+            UploadFileUtils.writeOrUpdate(path, bytes);
+            buildingEntity.setAvatar(path);
+        }
     }
 }
