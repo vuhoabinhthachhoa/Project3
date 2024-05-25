@@ -34,9 +34,9 @@ public class BuildingConverter {
 
         // delete the redundant , at the end of the string
         String result =  String.join(", ", values);
-        if(!result.isEmpty()) {
-            result = result.substring(0, result.length() - 1);
-        }
+//        if(!result.isEmpty()) {
+//            result = result.substring(0, result.length() - 1);
+//        }
         return result;
     }
     public BuildingSearchResponse convertToResponse(BuildingEntity buildingEntity) {

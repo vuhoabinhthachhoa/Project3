@@ -14,7 +14,7 @@ public interface IBuildingService {
     public ResponseDTO findBuildings(Map<String, Object> params, List<String> typeCode);
     public ResponseDTO getBuildingById(Long buildingId);
     public ResponseDTO getStaffs(Long buildingId);
-    public void addBuilding(BuildingDTO buildingDTO) throws IOException;
+    public void addBuilding(BuildingDTO buildingDTO);
     public void updateAssignmentBuilding(AssignmentBuildingDTO assignmentBuildingDTO);
     public void updateBuilding(BuildingDTO buildingDTO);
     public void deleteBuildings(List<Long> buildingIds);

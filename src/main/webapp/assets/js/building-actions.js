@@ -9,6 +9,10 @@ function addBuilding(data) {
         alert('Building name is missing');
         return;
     }
+    if(data.rentArea == null || data.rentArea === "") {
+        alert('Rent areas is missing');
+        return;
+    }
 
     $.ajax({
         url: url, // 'http://localhost:8081 is not necessary, because we are using tomcat
@@ -76,7 +80,7 @@ function updateBuilding(data) {
         alert('Building name is missing');
         return;
     }
-    if(data.rentArea === "") {
+    if(data.rentArea == null || data.rentArea === "") {
         alert('Rent areas is missing');
         return;
     }

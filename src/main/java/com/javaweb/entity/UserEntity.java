@@ -7,7 +7,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -38,14 +40,18 @@ public class UserEntity extends BaseEntity {
     @Column(name = "email", unique = true)
     private String email;
 
-    @OneToMany(mappedBy = "staff", fetch = FetchType.LAZY)
-    private List<AssignmentBuildingEntity> assignmentBuildings = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "role_id", nullable = false))
     private List<RoleEntity> roles = new ArrayList<>();
+
+//    @OneToMany(mappedBy = "staff", fetch = FetchType.LAZY)
+//    private List<AssignmentBuildingEntity> assignmentBuildings = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "staffs")
+    private Set<BuildingEntity> buildings = new HashSet<>();
 
 
 //    @OneToMany(mappedBy="staffs", fetch = FetchType.LAZY)
